@@ -106,6 +106,23 @@ See `src/components/Button.test.tsx` (isolated component), `src/hooks/useCounter
 
 **Not building a counter/examples screen?** Delete `src/screens/ExamplesScreen.tsx` and `ExamplesScreen.test.tsx`, remove `Examples` from `RootStackParamList` in `src/navigation/types.ts`, and remove its `<Stack.Screen>` in `RootNavigator.tsx` and the button in `HomeScreen.tsx`.
 
+## Environment variables
+
+Config lives in `app.config.js` (not `app.json`), so it can read `process.env` —
+`APP_ENV=development` switches the app name and bundle/package id between dev
+and prod builds.
+
+Copy `.env.example` to `.env` and fill in real values. Anything prefixed
+`EXPO_PUBLIC_` is loaded automatically by the Expo CLI and inlined into the JS
+bundle at build time — readable by anyone, so never put secrets there. Values
+without that prefix are only visible inside `app.config.js` itself (Node,
+not the bundle). See the [Expo env vars guide](https://docs.expo.dev/guides/environment-variables/).
+
+## CI
+
+`.github/workflows/ci.yml` runs `npm run check` (typecheck + lint + test) on
+every push and PR to `main`.
+
 ## Notes
 
 - `@expo/vector-icons` is mocked out in tests (`jest.setup.tsx`) — its async font loading otherwise spams `act()` warnings unrelated to anything you'll be testing.
