@@ -1,7 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/Button';
-import { useCounter } from '@/hooks/useCounter';
 import type { TabScreenProps } from '@/navigation/types';
 
 const ITEMS = [
@@ -11,18 +10,9 @@ const ITEMS = [
 ];
 
 export function HomeScreen({ navigation }: TabScreenProps<'Home'>) {
-  const { count, increment, decrement, reset } = useCounter();
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Home</Text>
-
-      <View style={styles.counterRow}>
-        <Button label="-" onPress={decrement} accessibilityLabel="decrement" />
-        <Text style={styles.count}>{count}</Text>
-        <Button label="+" onPress={increment} accessibilityLabel="increment" />
-      </View>
-      <Button label="Reset" variant="secondary" onPress={reset} />
 
       <FlatList
         style={styles.list}
@@ -37,6 +27,8 @@ export function HomeScreen({ navigation }: TabScreenProps<'Home'>) {
         )}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
+
+      <Button label="Examples" onPress={() => navigation.navigate('Examples', undefined)} />
     </View>
   );
 }
@@ -51,18 +43,8 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '700',
   },
-  counterRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 16,
-  },
-  count: {
-    fontSize: 24,
-    minWidth: 40,
-    textAlign: 'center',
-  },
   list: {
-    marginTop: 8,
+    flex: 1,
   },
   separator: {
     height: 12,

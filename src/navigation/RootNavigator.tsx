@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { DetailsScreen } from '@/screens/DetailsScreen';
+import { ExamplesScreen } from '@/screens/ExamplesScreen';
 import { TabNavigator } from '@/navigation/TabNavigator';
 import type { RootStackParamList } from '@/navigation/types';
 
@@ -17,6 +18,7 @@ export function RootNavigator() {
           component={DetailsScreen}
           options={({ route }) => ({ title: route.params.title ?? 'Details' })}
         />
+        <Stack.Screen name="Examples" component={ExamplesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -46,8 +46,9 @@ src/
     TabNavigator.tsx         bottom tabs: Home, Settings
     types.ts                 typed param lists for both navigators
   screens/
-    HomeScreen.tsx            counter + list navigating to Details
+    HomeScreen.tsx            list navigating to Details, link to Examples
     DetailsScreen.tsx
+    ExamplesScreen.tsx        counter + both Button variants, kept separate so it's a one-file delete
     SettingsScreen.tsx
   components/
     Button.tsx                small reusable component, with a test alongside it
@@ -102,6 +103,8 @@ fireEvent.press(screen.getByRole('button'));
 expect(screen.getByText('...')).toBeTruthy();
 ```
 See `src/components/Button.test.tsx` (isolated component), `src/hooks/useCounter.test.ts` (hook via `renderHook`), and `src/screens/HomeScreen.test.tsx` (full navigator tree) for three levels of test scope to copy from.
+
+**Not building a counter/examples screen?** Delete `src/screens/ExamplesScreen.tsx` and `ExamplesScreen.test.tsx`, remove `Examples` from `RootStackParamList` in `src/navigation/types.ts`, and remove its `<Stack.Screen>` in `RootNavigator.tsx` and the button in `HomeScreen.tsx`.
 
 ## Notes
 

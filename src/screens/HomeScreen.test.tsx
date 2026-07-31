@@ -3,18 +3,6 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { RootNavigator } from '@/navigation/RootNavigator';
 
 describe('HomeScreen', () => {
-  it('increments and decrements the counter', () => {
-    render(<RootNavigator />);
-
-    expect(screen.getByText('0')).toBeTruthy();
-
-    fireEvent.press(screen.getByLabelText('increment'));
-    fireEvent.press(screen.getByLabelText('increment'));
-    fireEvent.press(screen.getByLabelText('decrement'));
-
-    expect(screen.getByText('1')).toBeTruthy();
-  });
-
   it('renders every list item', () => {
     render(<RootNavigator />);
 
@@ -29,5 +17,13 @@ describe('HomeScreen', () => {
     fireEvent.press(screen.getByText('First item'));
 
     expect(screen.getByText('Item id: 1')).toBeTruthy();
+  });
+
+  it('navigates to the examples screen', () => {
+    render(<RootNavigator />);
+
+    fireEvent.press(screen.getByText('Examples'));
+
+    expect(screen.getByText('Counter state via useCounter, plus both Button variants.')).toBeTruthy();
   });
 });
