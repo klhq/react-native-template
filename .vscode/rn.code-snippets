@@ -1,0 +1,44 @@
+{
+  "React Native Functional Component": {
+    "prefix": "rnc",
+    "body": [
+      "import { StyleSheet, Text, View } from 'react-native';",
+      "",
+      "type ${1:${TM_FILENAME_BASE}}Props = {",
+      "  $2",
+      "};",
+      "",
+      "export function ${1:${TM_FILENAME_BASE}}({ $3 }: ${1:${TM_FILENAME_BASE}}Props) {",
+      "  return (",
+      "    <View style={styles.container}>",
+      "      <Text>$0</Text>",
+      "    </View>",
+      "  );",
+      "}",
+      "",
+      "const styles = StyleSheet.create({",
+      "  container: {},",
+      "});",
+      ""
+    ],
+    "description": "Scaffold a typed React Native functional component"
+  },
+  "Testing Library Test Case": {
+    "prefix": "rntest",
+    "body": [
+      "import { render, screen } from '@testing-library/react-native';",
+      "",
+      "import { ${1:${TM_FILENAME_BASE}} } from './${1:${TM_FILENAME_BASE}}';",
+      "",
+      "describe('${1:${TM_FILENAME_BASE}}', () => {",
+      "  it('$2', () => {",
+      "    render(<${1:${TM_FILENAME_BASE}} $3/>);",
+      "",
+      "    $0",
+      "  });",
+      "});",
+      ""
+    ],
+    "description": "Scaffold a React Native Testing Library test file"
+  }
+}

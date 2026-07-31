@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Expo",
+      "type": "npm",
+      "script": "start",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Tests (watch)",
+      "type": "npm",
+      "script": "test:watch",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Typecheck + Lint + Test",
+      "type": "npm",
+      "script": "check",
+      "problemMatcher": []
+    }
+  ]
+}
