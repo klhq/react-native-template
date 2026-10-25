@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "import", "jest"],
+  "jsPlugins": ["eslint-plugin-expo"],
+  "env": { "browser": true, "node": true, "jest": true },
+  "categories": { "correctness": "error" },
+  "rules": {
+    "eqeqeq": ["warn", "smart"],
+    "no-var": "error",
+    "import/first": "warn",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/no-this-in-sfc": "warn",
+    "expo/use-dom-exports": "error",
+    "expo/no-env-var-destructuring": "error",
+    "expo/no-dynamic-env-var": "error"
+  },
+  "ignorePatterns": ["dist/**", ".expo/**", "android/**", "ios/**"]
+}

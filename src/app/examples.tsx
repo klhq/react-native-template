@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from '@/components/Button';
 import { useCounter } from '@/hooks/useCounter';
 
-export function ExamplesScreen() {
+export default function ExamplesScreen() {
   const { count, increment, decrement, reset } = useCounter();
 
   return (

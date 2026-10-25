@@ -1,16 +1,17 @@
+import { Stack, router, useLocalSearchParams } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/Button';
-import type { RootStackScreenProps } from '@/navigation/types';
 
-export function DetailsScreen({ route, navigation }: RootStackScreenProps<'Details'>) {
-  const { itemId, title } = route.params;
+export default function DetailsScreen() {
+  const { id, title } = useLocalSearchParams<{ id: string; title?: string }>();
 
   return (
     <View style={styles.container}>
+      <Stack.Screen options={{ title: title ?? 'Details' }} />
       <Text style={styles.title}>{title ?? 'Details'}</Text>
-      <Text style={styles.subtitle}>Item id: {itemId}</Text>
-      <Button label="Go back" onPress={() => navigation.goBack()} />
+      <Text style={styles.subtitle}>Item id: {id}</Text>
+      <Button label="Go back" onPress={() => router.back()} />
     </View>
   );
 }

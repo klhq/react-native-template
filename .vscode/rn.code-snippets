@@ -19,9 +19,9 @@
       "const styles = StyleSheet.create({",
       "  container: {},",
       "});",
-      ""
+      "",
     ],
-    "description": "Scaffold a typed React Native functional component"
+    "description": "Scaffold a typed React Native functional component",
   },
   "Testing Library Test Case": {
     "prefix": "rntest",
@@ -31,14 +31,14 @@
       "import { ${1:${TM_FILENAME_BASE}} } from './${1:${TM_FILENAME_BASE}}';",
       "",
       "describe('${1:${TM_FILENAME_BASE}}', () => {",
-      "  it('$2', () => {",
-      "    render(<${1:${TM_FILENAME_BASE}} $3/>);",
+      "  it('$2', async () => {",
+      "    await render(<${1:${TM_FILENAME_BASE}} $3/>);",
       "",
       "    $0",
       "  });",
       "});",
-      ""
+      "",
     ],
-    "description": "Scaffold a React Native Testing Library test file"
-  }
+    "description": "Scaffold a React Native Testing Library test file",
+  },
 }
