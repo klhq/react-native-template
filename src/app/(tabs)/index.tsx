@@ -1,7 +1,7 @@
+import { router } from 'expo-router';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/Button';
-import type { TabScreenProps } from '@/navigation/types';
 
 const ITEMS = [
   { id: 1, title: 'First item' },
@@ -9,7 +9,7 @@ const ITEMS = [
   { id: 3, title: 'Third item' },
 ];
 
-export function HomeScreen({ navigation }: TabScreenProps<'Home'>) {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Home</Text>
@@ -22,13 +22,18 @@ export function HomeScreen({ navigation }: TabScreenProps<'Home'>) {
           <Button
             label={item.title}
             variant="secondary"
-            onPress={() => navigation.navigate('Details', { itemId: item.id, title: item.title })}
+            onPress={() =>
+              router.push({
+                pathname: '/details/[id]',
+                params: { id: String(item.id), title: item.title },
+              })
+            }
           />
         )}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
 
-      <Button label="Examples" onPress={() => navigation.navigate('Examples', undefined)} />
+      <Button label="Examples" onPress={() => router.push('/examples')} />
     </View>
   );
 }

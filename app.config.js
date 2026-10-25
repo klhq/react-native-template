@@ -4,6 +4,7 @@ const IS_DEV = process.env.APP_ENV === 'development';
 module.exports = {
   name: IS_DEV ? 'react-native-template (dev)' : 'react-native-template',
   slug: 'react-native-template',
+  scheme: 'rntemplate',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -25,5 +26,8 @@ module.exports = {
   web: {
     favicon: './assets/favicon.png',
   },
-  plugins: ['expo-asset'],
+  plugins: ['expo-router', 'expo-status-bar', 'expo-asset'],
+  experiments: {
+    typedRoutes: true,
+  },
 };
