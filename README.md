@@ -8,7 +8,7 @@ An Expo + TypeScript starter tuned for two things: working comfortably in VSCode
 - TypeScript, strict mode
 - [Expo Router](https://docs.expo.dev/router/introduction/): file-based routes under `src/app/`, with a stack, bottom tabs, and typed routes
 - [Jest](https://jestjs.io/) 30 + [`jest-expo`](https://docs.expo.dev/develop/unit-testing/) + [React Native Testing Library](https://oss.callstack.com/react-native-testing-library/) 14, with 10 passing example tests
-- ESLint (flat config, `eslint-config-expo`) + Prettier
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter) with Expo's own lint rules loaded as a JS plugin, + Prettier
 - pnpm with a pinned version, Node from `.node-version`
 - Path alias: `@/*` → `src/*`
 
@@ -32,8 +32,8 @@ Then pick a target:
 | `pnpm start`          | Start the Expo dev server                             |
 | `pnpm test`           | Run the Jest suite once                               |
 | `pnpm run test:watch` | Run Jest in watch mode                                |
-| `pnpm run lint`       | ESLint                                                |
-| `pnpm run lint:fix`   | ESLint with autofix                                   |
+| `pnpm run lint`       | Oxlint, warnings fail                                 |
+| `pnpm run lint:fix`   | Oxlint with autofix                                   |
 | `pnpm run format`     | Prettier, write mode                                  |
 | `pnpm run typecheck`  | `tsc --noEmit`                                        |
 | `pnpm run check`      | typecheck + lint + format check + test, in that order |
@@ -68,7 +68,7 @@ Component and hook tests live next to the file they cover. Expo Router treats ev
 Opening the folder will prompt you to install the recommended extensions (`.vscode/extensions.json`):
 
 - **Expo Tools**: Expo-aware diagnostics and commands
-- **ESLint** / **Prettier**: format-on-save and fix-on-save are already enabled in `.vscode/settings.json`
+- **Oxc** / **Prettier**: format-on-save and fix-on-save are already enabled in `.vscode/settings.json`
 - **Jest** (Orta): inline pass/fail gutter icons and a Testing sidebar, no terminal needed
 
 ### Debugging
@@ -147,4 +147,4 @@ runs `pnpm run check` on every push and PR to `main`.
 
 - `@expo/vector-icons` is mocked out in tests (`jest.setup.tsx`); its async font loading otherwise spams `act()` warnings unrelated to anything you'll be testing.
 - `ios/` and `android/` are not generated; this stays on the Expo managed workflow. Run `pnpm exec expo prebuild` only if a native module actually requires it.
-- ESLint stays on 9.x because `eslint-config-expo` 58 depends on `eslint-plugin-import` and `eslint-plugin-react`, which do not support ESLint 10 yet.
+- Linting uses Oxlint instead of `eslint-config-expo`. Oxlint covers the React, hooks, import, TypeScript and Jest rules natively, and `.oxlintrc.json` loads `eslint-plugin-expo` through `jsPlugins` for the Expo-specific rules (`EXPO_PUBLIC_` access, DOM component exports). `expo lint` assumes ESLint, so use `pnpm run lint` instead.
